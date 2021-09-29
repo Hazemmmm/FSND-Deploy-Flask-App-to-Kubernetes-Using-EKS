@@ -6,15 +6,7 @@
       "Principal": {
         "AWS": "arn:aws:iam::450586547595:root"
       },
-      "Action": [
-        "iam:CreateRole",
-        "iam:PutRolePolicy",
-        "lambda:CreateFunction",
-        "lambda:InvokeAsync",
-        "lambda:InvokeFunction",
-        "iam:PassRole"
-      ],
-      "Resource": ["*"]
+      "Action": "sts:AssumeRole"
     }
   ]
 }
