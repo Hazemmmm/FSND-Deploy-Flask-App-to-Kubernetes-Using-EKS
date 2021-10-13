@@ -42,6 +42,8 @@ phases:
       - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
       - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
       # - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
+      - echo $AWS_SESSION_TOKEN
+      - echo $AWS_SECRET_ACCESS_KEY
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn $EKS_KUBECTL_ROLE_ARN --region us-west-2
       - kubectl patch configmap/aws-auth -n kube-system --patch "$(cat ./aws-auth-patch.yml)"
       - kubectl apply -f simple_jwt_api.yml
